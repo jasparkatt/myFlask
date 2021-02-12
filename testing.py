@@ -42,7 +42,7 @@ plt.show()
 # this is using the actual api from alphavantage to get the data from the url api
 
 
-key = 'LAJBI8EN52GC18OY'
+key = ''
 ticker = 'GME'
 url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={}&apikey={}'.format(ticker, key)
 response = requests.get(url)
@@ -51,7 +51,7 @@ pprint(response.json())
 # %%
 # messing around with loops to get multi datapoints using alpha_vantage wrapper
 
-key = 'LAJBI8EN52GC18OY'
+key = ''
 ts = TimeSeries(key, output_format='pandas')
 symbols = ['AAPL', 'GOOG', 'TSLA', 'MSFT', 'GME']
 for symbol in symbols:
@@ -61,7 +61,7 @@ for symbol in symbols:
 
 # %%
 from alpha_vantage.sectorperformance import SectorPerformances
-sp = SectorPerformances(key='LAJBI8EN52GC18OY', output_format='pandas')
+sp = SectorPerformances(key='', output_format='pandas')
 data, meta_data = sp.get_sector()
 data.describe()
 
