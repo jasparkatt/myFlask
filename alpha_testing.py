@@ -4,7 +4,7 @@ from alpha_vantage.techindicators import TechIndicators
 from matplotlib.pyplot import figure
 import matplotlib.pyplot as plt
 
-key = 'LAJBI8EN52GC18OY'
+key = ''
 ts = TimeSeries(key, output_format='pandas')
 ti = TechIndicators(key)
 
@@ -21,7 +21,7 @@ plt.show()
 import requests
 import json
 from pprint import pprint
-key = 'LAJBI8EN52GC18OY'
+key = ''
 ticker = 'GME'
 url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={}&apikey={}'.format(ticker, key)
 response = requests.get(url)
@@ -30,7 +30,7 @@ pprint(response.json())
 import asyncio
 from alpha_vantage.async_support.timeseries import TimeSeries
 symbols = ['AAPL', 'GOOG', 'TSLA', 'MSFT', 'GME']
-key = 'LAJBI8EN52GC18OY'
+key = ''
 async def get_data(symbol):
     ts = TimeSeries(key)
     data, _ = await ts.get_quote_endpoint(symbol)
