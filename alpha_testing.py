@@ -3,8 +3,9 @@ from alpha_vantage.timeseries import TimeSeries
 from alpha_vantage.techindicators import TechIndicators
 from matplotlib.pyplot import figure
 import matplotlib.pyplot as plt
+import pandas as pd
 
-key = ''
+key = 'LAJBI8EN52GC18OY'
 ts = TimeSeries(key, output_format='pandas')
 ti = TechIndicators(key)
 
@@ -21,16 +22,17 @@ plt.show()
 import requests
 import json
 from pprint import pprint
-key = ''
+key = 'LAJBI8EN52GC18OY'
 ticker = 'GME'
 url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={}&apikey={}'.format(ticker, key)
 response = requests.get(url)
 pprint(response.json())
 
 import asyncio
+from pprint import pprint
 from alpha_vantage.async_support.timeseries import TimeSeries
 symbols = ['AAPL', 'GOOG', 'TSLA', 'MSFT', 'GME']
-key = ''
+key = 'LAJBI8EN52GC18OY'
 async def get_data(symbol):
     ts = TimeSeries(key)
     data, _ = await ts.get_quote_endpoint(symbol)
@@ -41,3 +43,10 @@ tasks = [get_data(symbol) for symbol in symbols]
 group1 = asyncio.gather(*tasks)
 results = loop.run_until_complete(group1)
 pprint(results)
+
+##TESTING DATATABLES WITH PANDAS DF's
+# Creates the dataframe
+df = pd.DataFrame(response)
+
+# Parses the dataframe into an HTML element with 3 Bootstrap classes assigned.
+html = df.to_html(classes=["table-bordered", "table-striped", "table-hover"])
