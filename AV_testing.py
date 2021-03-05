@@ -28,7 +28,5 @@ pprint(df)
 print("********************")
 df.index.rename('date', inplace=True)
 pprint(df)
-df.droplevel()
-pprint(df)
 
 data2csv = df.to_csv('data2csv.csv', index = True)
